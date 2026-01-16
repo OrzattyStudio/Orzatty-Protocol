@@ -1,0 +1,18 @@
+[package]
+name = "orzatty-reference-server"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "simple_server"
+path = "src/main.rs"
+
+[dependencies]
+orzatty-core = { workspace = true }
+tokio = { workspace = true }
+quinn = { workspace = true }
+anyhow = { workspace = true }
+rcgen = { workspace = true }
+rustls = { workspace = true }
+rkyv = { workspace = true }
