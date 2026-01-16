@@ -1,0 +1,33 @@
+[package]
+name = "orzatty-wasm"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen = "=0.2.108"
+js-sys = "0.3"
+wasm-bindgen-futures = "0.4"
+console_error_panic_hook = "0.1"
+# Core logic (must be WASM compatible)
+orzatty-core = { path = "../orzatty-core", features = [] }
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+    "Window",
+    "WorkerGlobalScope",
+    "console",
+    "WebTransport",
+    "WebTransportOptions",
+    "WebTransportDatagramDuplexStream",
+    "WebTransportBidirectionalStream",
+    "WebTransportSendStream",
+    "WebTransportReceiveStream",
+    "ReadableStream",
+    "WritableStream",
+    "WritableStreamDefaultWriter",
+    "ReadableStreamDefaultReader",
+]

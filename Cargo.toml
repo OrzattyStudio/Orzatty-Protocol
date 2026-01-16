@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "orzatty-core",
+    "orzatty-client",
+    "orzatty-wasm",
+]
+resolver = "2"

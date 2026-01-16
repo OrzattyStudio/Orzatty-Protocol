@@ -1,0 +1,20 @@
+[package]
+name = "orzatty-client"
+version = "0.1.0"
+edition = "2021"
+description = "High-performance Orzatty client with actor-based flow control (QUIC-based)"
+license = "MIT"
+repository = "https://github.com/Orzatty/orzatty"
+keywords = ["quic", "client", "reliable", "low-latency", "actor-model"]
+categories = ["network-programming"]
+
+[dependencies]
+orzatty-core = { path = "../orzatty-core", features = ["quinn"] }
+tokio = { version = "1", features = ["full"] }
+quinn = "0.10"
+rustls = { version = "0.21", features = ["dangerous_configuration"] }
+rustls-native-certs = "0.6"
+anyhow = "1.0"
+rkyv = { version = "0.7.42", features = ["std", "validation", "alloc"] }
+bytes = "1.0"
+

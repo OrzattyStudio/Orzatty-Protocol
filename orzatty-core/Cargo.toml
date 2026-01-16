@@ -1,0 +1,34 @@
+[package]
+name = "orzatty-core"
+version = "0.1.0"
+edition = "2021"
+description = "Core wire format and zero-copy protocol definitions for Orzatty (QUIC-based reliable bridge)"
+license = "MIT"
+repository = "https://github.com/Orzatty/orzatty"
+keywords = ["quic", "protocol", "reliable", "low-latency", "zero-copy"]
+categories = ["network-programming"]
+
+[features]
+default = []
+# Enable std support for framer and async IO
+std = ["rkyv/std"]
+# Enable Quinn-specific framer implementation
+quinn = ["std", "dep:quinn", "dep:bytes", "dep:anyhow"]
+
+[dependencies]
+# Zero-copy serialization framework. 
+# validation: necessary for checking archived data safety.
+# strict: stricter layout guarantees.
+rkyv = { version = "0.7.42", default-features = false, features = ["size_32", "validation", "alloc"] }
+
+# Efficient bitflags for frame headers
+bitflags = "2.4"
+
+# Framer dependencies (only with std/quinn features)
+quinn = { version = "0.10", optional = true }
+bytes = { version = "1.0", optional = true }
+anyhow = { version = "1.0", optional = true }
+
+[dev-dependencies]
+# Standard library support for tests
+rkyv = { version = "0.7.42", features = ["std", "validation"] }
